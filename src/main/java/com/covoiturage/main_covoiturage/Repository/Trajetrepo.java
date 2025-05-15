@@ -11,11 +11,18 @@ import java.util.List;
 import java.util.Optional;
 
 public interface Trajetrepo extends JpaRepository<Trajet, Long> {
-    public Trajet findById(long id);
+
     @Query("SELECT t FROM Trajet t WHERE t.conducteur.id = :conducteurId AND t.depart = :depart AND t.heureDepart = :heure")
 
     Optional<Trajet> findBydepart(@Param("conducteurId") Long conducteurId,
                                          @Param("depart") String depart,
                                          @Param("heure") LocalTime heure);
     List<Trajet> findByParticipants_Id(Long personneId);
+    List<Trajet> findByConducteurId(Long conducteurId);
+    @Query("SELECT t FROM Trajet t LEFT JOIN FETCH t.stations WHERE t.id = :id")
+    Trajet findTrajetWithStations(Long id);
+    @Query("SELECT t FROM Trajet t LEFT JOIN FETCH t.stations LEFT JOIN FETCH t.conducteur")
+    List<Trajet> findAllTrajetsWithStationsAndConducteur();
+
+
 }

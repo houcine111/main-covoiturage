@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -19,6 +20,7 @@ public class Trajet {
     private String depart;
     private String destination;
     private LocalTime heureDepart;
+    private Date dateDepart;
     private double prix;
 
     @ElementCollection
@@ -27,6 +29,7 @@ public class Trajet {
     @ManyToOne
     @JoinColumn(name = "conducteur_id", nullable = false)
     private Conducteur conducteur;
+    private int nbplace;
     @ManyToMany
 
     private List<Personne> participants;

@@ -13,7 +13,7 @@ import java.util.Map;
 public class jwt {
 
     private final String jwtSecret = "mysecretkeymysecretkeymysecretkey"; // must be at least 256 bits
-    private final long jwtExpirationInMs = 86400000;
+    private final long jwtExpirationInMs = 3600000;
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(jwtSecret.getBytes());
     }

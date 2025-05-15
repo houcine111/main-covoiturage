@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface Conducteurrepo extends JpaRepository<Conducteur, Integer> {
+public interface Conducteurrepo extends JpaRepository<Conducteur, Long> {
     Optional<Conducteur> findByUsername(String username);
 
 

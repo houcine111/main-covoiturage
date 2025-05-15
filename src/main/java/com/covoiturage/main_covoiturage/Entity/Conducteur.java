@@ -26,13 +26,14 @@ public class Conducteur {
     private String genre;
 
     private String numeroTelephone;
+    @Lob
+    private byte[] permisPhoto;
 
-    private String permisPhoto;
-
-
-    private String immatriculationPhoto;
+    @Lob
+    private byte[] immatriculationPhoto;
     @Enumerated(EnumType.STRING)
     private Role role=Role.CONDUCTEUR;
+    private Boolean actif=false;
     @JsonManagedReference
     @OneToMany(mappedBy = "conducteur", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Trajet> trajets;
